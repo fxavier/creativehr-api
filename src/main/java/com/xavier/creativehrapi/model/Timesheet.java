@@ -1,28 +1,37 @@
 package com.xavier.creativehrapi.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "irps")
-public class IRPS implements Serializable {
+@Table(name = "timesheet")
+public class Timesheet implements Serializable {
 
-	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
-	private String indice;
+	private LocalDate data;
 	
-	private BigDecimal taxaPercentual;
+	private Integer horas;
+	
+	@Column(name = "dias_ferias")
+	private Integer diasFerias;
+	
+	@ManyToOne
+	@JoinColumn(name = "codigo_funcionario")
+	private Funcionario  funcionario;
 
 	public Long getCodigo() {
 		return codigo;
@@ -32,20 +41,36 @@ public class IRPS implements Serializable {
 		this.codigo = codigo;
 	}
 
-	public String getIndice() {
-		return indice;
+	public LocalDate getData() {
+		return data;
 	}
 
-	public void setIndice(String indice) {
-		this.indice = indice;
+	public void setData(LocalDate data) {
+		this.data = data;
 	}
 
-	public BigDecimal getTaxaPercentual() {
-		return taxaPercentual;
+	public Integer getHoras() {
+		return horas;
 	}
 
-	public void setTaxaPercentual(BigDecimal taxaPercentual) {
-		this.taxaPercentual = taxaPercentual;
+	public void setHoras(Integer horas) {
+		this.horas = horas;
+	}
+
+	public Integer getDiasFerias() {
+		return diasFerias;
+	}
+
+	public void setDiasFerias(Integer diasFerias) {
+		this.diasFerias = diasFerias;
+	}
+
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
 	}
 
 	@Override
@@ -64,7 +89,7 @@ public class IRPS implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		IRPS other = (IRPS) obj;
+		Timesheet other = (Timesheet) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
