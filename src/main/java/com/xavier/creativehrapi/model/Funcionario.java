@@ -91,7 +91,8 @@ public class Funcionario implements Serializable{
 	private LocalDate dataValidade;
 	
 	private String telefone;
-	
+
+	@Column(name = "telemovel")
 	private String celular;
 	
 	@Column(name = "data_nascimento")
