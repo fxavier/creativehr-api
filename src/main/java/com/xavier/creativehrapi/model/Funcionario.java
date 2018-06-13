@@ -18,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "funcionario")
@@ -33,10 +34,23 @@ public class Funcionario implements Serializable{
 	@Column(name = "numero_interno")
 	private Long numeroInterno;
 	
+	private String nome;
+	
+	private String sobrenome;
+	
+	private String apelido;
+	
+	@Column(name = "data_inicio_contrato")
+	private LocalDate dataInicioContrato;
+	
+	@Column(name = "data_fim_contrato")
+	private LocalDate dataFimContrato;
+	
 	@ManyToOne
 	@JoinColumn(name = "codigo_status")
 	private StatusFuncionario statusFuncionario;
 	
+	@NotNull
 	private String morada;
 	
 	@ManyToOne
@@ -50,14 +64,18 @@ public class Funcionario implements Serializable{
 	@JoinColumn(name = "codigo_estabelecimento")
 	private Estabelecimento estabelecimento;
 	
+	@NotNull
 	private Long nuit;
 	
+	@NotNull
 	@Column(name = "numero_dependentes")
 	private Long numeroDependentes;
 	
+	@NotNull
 	@Column(name = "numero_beneficiario")
 	private Long numeroBeneficiario;
 	
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	@Column(name = "documento_identificacao")
 	private DocumentoIdentificacao documentoIdentificacao;
@@ -65,6 +83,7 @@ public class Funcionario implements Serializable{
 	@Column(name = "numero_identificacao")
 	private String numeroIdentificacao;
 	
+	@NotNull
 	@Column(name = "data_emissao")
 	private LocalDate dataEmissao;
 	
@@ -161,6 +180,46 @@ public class Funcionario implements Serializable{
 
 	public void setNumeroInterno(Long numeroInterno) {
 		this.numeroInterno = numeroInterno;
+	}
+
+	public LocalDate getDataInicioContrato() {
+		return dataInicioContrato;
+	}
+
+	public void setDataInicioContrato(LocalDate dataInicioContrato) {
+		this.dataInicioContrato = dataInicioContrato;
+	}
+
+	public LocalDate getDataFimContrato() {
+		return dataFimContrato;
+	}
+
+	public void setDataFimContrato(LocalDate dataFimContrato) {
+		this.dataFimContrato = dataFimContrato;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getSobrenome() {
+		return sobrenome;
+	}
+
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
+	}
+
+	public String getApelido() {
+		return apelido;
+	}
+
+	public void setApelido(String apelido) {
+		this.apelido = apelido;
 	}
 
 	public StatusFuncionario getStatusFuncionario() {

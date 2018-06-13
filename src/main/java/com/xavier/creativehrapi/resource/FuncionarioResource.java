@@ -5,6 +5,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.xavier.creativehrapi.event.RecursoCriadoEvent;
 import com.xavier.creativehrapi.model.Funcionario;
 import com.xavier.creativehrapi.repository.FuncionarioRepository;
+import com.xavier.creativehrapi.repository.filter.FuncionarioFilter;
 import com.xavier.creativehrapi.service.FuncionarioService;
 
 @RestController
@@ -50,6 +53,11 @@ public class FuncionarioResource {
 		
 	}
 	
+	@GetMapping
+	public Page<Funcionario> pesquisar(FuncionarioFilter funcionarioFilter, Pageable pageable){
+		return funcionarioRepository.filtrar(funcionarioFilter, pageable);
+	}
+	
 	@PutMapping("/{codigo}")
 	public ResponseEntity<Funcionario> editar(@PathVariable Long codigo, @Valid @RequestBody Funcionario funcionario){
 		Funcionario funcionarioSalvo = funcionarioService.actualizar(codigo, funcionario);
@@ -59,7 +67,7 @@ public class FuncionarioResource {
 	@DeleteMapping("/{codigo}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long codigo) {
-		funcionarioRepository.deleteById(codigo);
+		funcionarioRepository.delete(codigo);
 	}
 
 }
