@@ -24,6 +24,8 @@ public class TipoContrato implements Serializable {
 	
 	@Column(name = "dias_aviso_previo")
 	private Long diasAvisoPrevio;
+	
+	private Long duracao;
 
 	public Long getCodigo() {
 		return codigo;
@@ -47,6 +49,15 @@ public class TipoContrato implements Serializable {
 
 	public void setDiasAvisoPrevio(Long diasAvisoPrevio) {
 		this.diasAvisoPrevio = diasAvisoPrevio;
+	}
+	
+	
+	public Long getDuracao() {
+		return duracao;
+	}
+
+	public void setDuracao(Long duracao) {
+		this.duracao = duracao;
 	}
 
 	@Override

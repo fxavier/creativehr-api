@@ -3,7 +3,6 @@ package com.xavier.creativehrapi.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import javax.annotation.Generated;
-import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
@@ -23,7 +22,6 @@ public abstract class Funcionario_ {
 	public static volatile SingularAttribute<Funcionario, BigDecimal> valorSegurancaSocial;
 	public static volatile SingularAttribute<Funcionario, PostoTrabalho> postoTrabalho;
 	public static volatile SingularAttribute<Funcionario, LocalDate> dataEmissao;
-	public static volatile SingularAttribute<Funcionario, Boolean> eSupervisor;
 	public static volatile SingularAttribute<Funcionario, BigDecimal> salarioDiario;
 	public static volatile SingularAttribute<Funcionario, Subsidio> subsidio;
 	public static volatile SingularAttribute<Funcionario, LocalDate> dataValidade;
@@ -46,12 +44,10 @@ public abstract class Funcionario_ {
 	public static volatile SingularAttribute<Funcionario, Pais> pais;
 	public static volatile SingularAttribute<Funcionario, BigDecimal> subsidioTurno;
 	public static volatile SingularAttribute<Funcionario, LocalDate> dataFimContrato;
-	public static volatile ListAttribute<Funcionario, Funcionario> funcionarioNormal;
 	public static volatile SingularAttribute<Funcionario, Estabelecimento> estabelecimento;
 	public static volatile SingularAttribute<Funcionario, Long> numeroDependentes;
 	public static volatile SingularAttribute<Funcionario, DocumentoIdentificacao> documentoIdentificacao;
 	public static volatile SingularAttribute<Funcionario, Sexo> sexo;
-	public static volatile SingularAttribute<Funcionario, Funcionario> supervisor;
 	public static volatile SingularAttribute<Funcionario, HabilitacoesAcademicas> habilitacoesAcademicas;
 
 }

@@ -112,8 +112,6 @@ sexo VARCHAR(20) NOT NULL,
 estado_civil VARCHAR(20) NOT NULL,
 regime_horario VARCHAR(50),
 codigo_posto BIGINT NOT NULL,
-supervisor BOOLEAN DEFAULT false,
-codigo_seu_supervisor BIGINT,
 salario_base DECIMAL(10,2) NOT NULL,
 salario_diario DECIMAL(10,2),
 subsidio_turno DECIMAL(10,2),
@@ -131,8 +129,6 @@ CONSTRAINT fk_funcionario_pais
   FOREIGN KEY(codigo_pais) REFERENCES pais(codigo),
 CONSTRAINT fk_funcionario_estabelecimento
   FOREIGN KEY(codigo_estabelecimento) REFERENCES estabelecimento(codigo),
-CONSTRAINT fk_funcionario_supervisor
-  FOREIGN KEY(codigo_seu_supervisor) REFERENCES funcionario(codigo),
 CONSTRAINT fk_funcionario_subsidio
   FOREIGN KEY(codigo_subsidio) REFERENCES subsidio(codigo),
 CONSTRAINT fk_funcionario_irps

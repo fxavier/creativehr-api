@@ -11,6 +11,7 @@ public abstract class TipoContrato_ {
 	public static volatile SingularAttribute<TipoContrato, Long> codigo;
 	public static volatile SingularAttribute<TipoContrato, Long> diasAvisoPrevio;
 	public static volatile SingularAttribute<TipoContrato, String> nome;
+	public static volatile SingularAttribute<TipoContrato, Long> duracao;
 
 }
 

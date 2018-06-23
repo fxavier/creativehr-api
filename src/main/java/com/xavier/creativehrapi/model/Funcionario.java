@@ -3,10 +3,7 @@ package com.xavier.creativehrapi.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -16,7 +13,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -112,16 +108,6 @@ public class Funcionario implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "codigo_posto")
 	private PostoTrabalho postoTrabalho;
-	
-	@Column(name = "supervisor")
-	private Boolean eSupervisor;
-	
-	@ManyToOne
-	@JoinColumn(name = "codigo_seu_supervisor")
-	private Funcionario supervisor;
-	
-	@OneToMany(mappedBy = "supervisor", cascade = CascadeType.ALL)
-	private List<Funcionario> funcionarioNormal = new ArrayList<>();
 	
 	@Column(name = "salario_base")
 	private BigDecimal salarioBase;
@@ -374,31 +360,7 @@ public class Funcionario implements Serializable{
 	public void setPostoTrabalho(PostoTrabalho postoTrabalho) {
 		this.postoTrabalho = postoTrabalho;
 	}
-
-
-	public Boolean geteSupervisor() {
-		return eSupervisor;
-	}
-
-	public void seteSupervisor(Boolean eSupervisor) {
-		this.eSupervisor = eSupervisor;
-	}
-
-	public Funcionario getSupervisor() {
-		return supervisor;
-	}
-
-	public void setSupervisor(Funcionario supervisor) {
-		this.supervisor = supervisor;
-	}
-
-	public List<Funcionario> getFuncionarioNormal() {
-		return funcionarioNormal;
-	}
-
-	public void setFuncionarioNormal(List<Funcionario> funcionarioNormal) {
-		this.funcionarioNormal = funcionarioNormal;
-	}
+	
 
 	public BigDecimal getSalarioBase() {
 		return salarioBase;

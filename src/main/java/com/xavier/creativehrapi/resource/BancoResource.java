@@ -31,6 +31,7 @@ public class BancoResource {
 	@Autowired
 	private ApplicationEventPublisher publisher;
 	
+
 	@GetMapping
 	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_BANCO') and #oauth2.hasScope('read')")
 	public List<Banco> listar(){
